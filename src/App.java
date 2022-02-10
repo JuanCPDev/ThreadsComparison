@@ -8,7 +8,7 @@ public class App {
         Random rand = new Random();
         int total = 0;
 
-        // Single thread
+        // Single thread generating 200million random ints calculating their sum
         long startTime = System.nanoTime();
         for (int index = 0; numbers.size() <= 200000000; index++) {
             numbers.add(rand.nextInt(10));
@@ -20,7 +20,8 @@ public class App {
         System.out.println(endTime - startTime + "ns for single threads");
         System.out.println(total + " total Single thread");
 
-        // 2 Threads
+        // 2 Threads generating 100million random ints individually and calculating
+        // their sum
         startTime = System.nanoTime();
         Thread1 oneHalf = new Thread1();
         Thread1 secondHalf = new Thread1();
@@ -34,7 +35,8 @@ public class App {
         System.out.println(endTime - startTime + "ns for x2 threads");
         System.out.println(oneHalf.returnTotal() + secondHalf.returnTotal() + " total x2 threads");
 
-        //4 threads
+        // 4 threads generating 50million random ints individually and calculating their
+        // sum
         startTime = System.nanoTime();
         Thread2 oneQuater = new Thread2();
         Thread2 twoQuater = new Thread2();
@@ -52,7 +54,8 @@ public class App {
 
         endTime = System.nanoTime();
         System.out.println(endTime - startTime + "ns for x4 threads");
-        System.out.println(oneQuater.returnTotal() + twoQuater.returnTotal()+threeQuater.returnTotal() +fourQuater.returnTotal() + " total x4 threads");
+        System.out.println(oneQuater.returnTotal() + twoQuater.returnTotal() + threeQuater.returnTotal()
+                + fourQuater.returnTotal() + " total x4 threads");
 
     }
 }
